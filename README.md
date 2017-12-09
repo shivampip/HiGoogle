@@ -156,6 +156,14 @@ signInButton.setOnClickListener(new View.OnClickListener() {
  
  DONE
  
+### Troubleshoot
+(1) Problem while running applicaiton (Change from signingReport to Run)
+
+<img src="Images/31.png" width="30%"></img> ***==>***  <img src="Images/32.png" width="30%"></img>
+
+(2) Not able to find package name (Go to AndroidManifest.xml)
+
+<img src="Images/33.png" width="40%"></img>
 
 #### Works on
 * Android 4.0.1 (Ice Cream Sandwich) and above.
