@@ -1,8 +1,5 @@
 # Hi Google- Google SignIn Made Easy
 
-**Watch this video**
-
-[<img src="images/Screenshot%20(492).png" width="40%"></img>](https://youtu.be/dDTjoCSvfs8)
 
 [**Hi Google**](https://github.com/shivam301296/HiGoogle)  is a powerful & easy to use lib for Android. It runs on [API level 14](http://developer.android.com/guide/topics/manifest/uses-sdk-element.html#ApiLevels) and upwards. 
 This library helps you to add Google Sign In option in your app with few lines of code. and also Guide you to the process of registering your app to Google Cloud.
@@ -61,14 +58,94 @@ dependencies {
 For a **detailed documentation** :notebook_with_decorative_cover:, please have a look at the [**Wiki**](https://github.com/shivam301296/HiGoogle/wiki) 
 
 
-**For using predefined Toast**
+## Register Your App on Google Cloud
+
+(1) Go to [**this link**](https://developers.google.com/mobile/add?platform=android&cntapi=signin&cnturl=https:%2F%2Fdevelopers.google.com%2Fidentity%2Fsign-in%2Fandroid%2Fsign-in%3Fconfigured%3Dtrue&cntlbl=Continue%20Adding%20Sign-In)
+
+(2) Fill your app name and package name
+
+<img src="Images/21.png" width="60%"></img>
+
+(3) Next it will ask for SHA1 Certificate. For getting SHA1 Certificate for your app, In your Android Studio
+Right Side (vertical) 
+**Gradle> Project Name> Project Name(root)> Tasks> android> signingReport (double click)**
+
+<img src="Images/22.png" width="50%"></img>
+
+(4) It will generate Signin report. Copy the SHA1 Certificate from it
+
+<img src="Images/23.png" width="60%"></img>
+
+(5) Fill this SHA1 Certificate in the form and click Generate Configuration file
+
+<img src="Images/24.png" width="60%"></img>
+
+(6) Download 'google-services.json' file
+
+<img src="Images/25.png" width="60%"></img>
+
+(7) Paste this file in Android Studio
+First Switch to Project View
+**Project Name> app> (Paste here)**
+
+<img src="Images/26.png" width="40%"></img>
+
+DONE
 
 
+## IN YOUR APP
 
+### Add SignIn Button in design xml file
+```
+<com.google.android.gms.common.SignInButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/googleSignInB"
+        android:layout_centerInParent="true"/>
+```
+	
+## In your Activity class
 
-**For using Custom Toast**
+(1) Define hiGoogle globally
+```
+HiGoogle hiGoogle;
+```
+(2) Initilize it in onCreate method
+```
+hiGoogle = new HiGoogle(this, this);
+```
+(3) On signIn button click, call signIn method
+```
+hiGoogle.signIn(new OnLoginListener() {
+                    @Override
+                    public void onSuccess(GoogleSignInAccount account) {
+                        display("Sign in Successful");
+                        tv.setText("SignIn Successful");
+                        tv.append("\nEmail:- " + account.getEmail());
+                        tv.append("\nName:- " + account.getDisplayName());
+                        Glide.with(getApplicationContext()).load(account.getPhotoUrl()).into(profileIv);
+                        tv.append("\nID:- "+account.getId());
+                    }
 
-   
+                    @Override
+                    public void onFailed(String why) {
+                        display("Sign in failed");
+                        tv.setText("Sign in failed due to:- \n"+why);
+                    }
+                });
+```
+
+(4) Override onActivityResult in your activity and call hiGoogle.fromActivityResult(...) method from inside
+```
+@Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        hiGoogle.fromActivityResult(requestCode, data);
+    }
+```
+ 
+ DONE
+ 
 
 #### Works on
 * Android 4.0.1 (Ice Cream Sandwich) and above.
