@@ -116,8 +116,8 @@ SignInButton signInButton;
 (2) Initilize it in onCreate method
 ```
 signInButton = findViewById(R.id.googleSignInB);
-hiGoogle = new HiGoogle(this, this);
-
+hiGoogle = new HiGoogle(this, this);  			//Normally recommanded
+hiGoogle = new HiGoogle(this, this, accessToken);	//If require Token id 
 ```
 (3) On signIn button click, call signIn method
 ```
