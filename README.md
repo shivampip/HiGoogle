@@ -53,9 +53,11 @@ dependencies {
 </dependency>
 ```
 
-## Documentation
+# Documentation
 
-For a **detailed documentation** :notebook_with_decorative_cover:, please have a look at the [**Wiki**](https://github.com/shivam301296/HiGoogle/wiki) 
+Adding Google SignIn button in your app involves two tasks
+1. Register your app on Google Cloude Plateform
+2. Programming in Android Studio or else
 
 
 ## Register Your App on Google Cloud
