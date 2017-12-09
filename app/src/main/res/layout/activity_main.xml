@@ -23,4 +23,23 @@
         android:id="@+id/googleSignInB"
         android:layout_centerInParent="true"/>
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:gravity="center"
+        android:id="@+id/tv"
+        android:text="Click on button to SignIn"
+        android:layout_below="@id/googleSignInB"/>
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:scaleType="fitCenter"
+        android:adjustViewBounds="true"
+        android:id="@+id/profilePicIv"
+        android:layout_above="@id/googleSignInB"
+        android:layout_margin="10dp"
+        android:layout_centerHorizontal="true"/>
+
 </RelativeLayout>

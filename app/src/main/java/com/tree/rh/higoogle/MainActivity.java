@@ -4,8 +4,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.common.SignInButton;
 import com.tree.rh.googlelib.HiGoogle;
@@ -14,6 +17,8 @@ import com.tree.rh.googlelib.OnLoginListener;
 public class MainActivity extends AppCompatActivity {
 
     SignInButton signInButton;
+    TextView tv;
+    ImageView profileIv;
 
     HiGoogle hiGoogle;
 
@@ -23,6 +28,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         signInButton = findViewById(R.id.googleSignInB);
+        tv = findViewById(R.id.tv);
+        profileIv = findViewById(R.id.profilePicIv);
 
         hiGoogle = new HiGoogle(this, this);
 
@@ -33,10 +40,17 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onSuccess(GoogleSignInAccount account) {
                         display("Sign in Successful");
+                        tv.setText("SignIn Successful");
+                        tv.append("\nEmail:- " + account.getEmail());
+                        tv.append("\nName:- " + account.getDisplayName());
+                        Glide.with(MainActivity.this).load(account.getPhotoUrl()).into(profileIv);
+                        tv.append("\nID:- "+account.getId());
                     }
+
                     @Override
                     public void onFailed(String why) {
                         display("Sign in failed");
+                        tv.setText("Sign in failed due to:- \n"+why);
                     }
                 });
             }
