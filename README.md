@@ -125,6 +125,7 @@ hiGoogle.signIn(new OnLoginListener() {
                         tv.setText("SignIn Successful");
                         tv.append("\nEmail:- " + account.getEmail());
                         tv.append("\nName:- " + account.getDisplayName());
+			//Need to add Glide Dependency and INTERNET permission
                         Glide.with(getApplicationContext()).load(account.getPhotoUrl()).into(profileIv);
                         tv.append("\nID:- "+account.getId());
                     }
