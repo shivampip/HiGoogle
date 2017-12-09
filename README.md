@@ -111,31 +111,38 @@ DONE
 (1) Define hiGoogle globally
 ```
 HiGoogle hiGoogle;
+SignInButton signInButton;
 ```
 (2) Initilize it in onCreate method
 ```
+signInButton = findViewById(R.id.googleSignInB);
 hiGoogle = new HiGoogle(this, this);
+
 ```
 (3) On signIn button click, call signIn method
 ```
-hiGoogle.signIn(new OnLoginListener() {
+signInButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                hiGoogle.signIn(new OnLoginListener() {
                     @Override
                     public void onSuccess(GoogleSignInAccount account) {
                         display("Sign in Successful");
                         tv.setText("SignIn Successful");
                         tv.append("\nEmail:- " + account.getEmail());
                         tv.append("\nName:- " + account.getDisplayName());
-			tv.append("\nID:- "+account.getId());
-			//Need to add Glide Dependency and INTERNET permission
+                        tv.append("\nID:- "+account.getId());
+                        //Need to add Glide Dependency and INTERNET permission
                         //Glide.with(getApplicationContext()).load(account.getPhotoUrl()).into(profileIv);
                     }
-
                     @Override
                     public void onFailed(String why) {
                         display("Sign in failed");
                         tv.setText("Sign in failed due to:- \n"+why);
                     }
                 });
+            }
+        });
 ```
 
 (4) Override onActivityResult in your activity and call hiGoogle.fromActivityResult(...) method from inside
