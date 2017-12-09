@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
                         tv.setText("SignIn Successful");
                         tv.append("\nEmail:- " + account.getEmail());
                         tv.append("\nName:- " + account.getDisplayName());
-                        Glide.with(MainActivity.this).load(account.getPhotoUrl()).into(profileIv);
+                        Glide.with(getApplicationContext()).load(account.getPhotoUrl()).into(profileIv);
                         tv.append("\nID:- "+account.getId());
                     }
 
