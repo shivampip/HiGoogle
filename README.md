@@ -189,6 +189,7 @@ signInButton.setOnClickListener(new View.OnClickListener() {
 * see [LICENSE](/LICENSE) file
 
 ## Sorry Albert Einstein Ji
-You had said- “Make things as simple as possible, but no simpler.”
-and this lib is simpler.
+You had said- **“Make things as simple as possible, but no simpler.”**
+
+But this lib is simpler.
 
