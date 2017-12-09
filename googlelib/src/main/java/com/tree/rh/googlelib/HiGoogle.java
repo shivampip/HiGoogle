@@ -12,9 +12,6 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
 
-/**
- * Created by Sittu Agrawal on 09-12-2017.
- */
 
 public class HiGoogle {
 
@@ -45,7 +42,6 @@ public class HiGoogle {
         mGoogleSignInClient = GoogleSignIn.getClient(context, gso);
     }
 
-    //602212208318-7n1a0eanisv7vcu4ob17vm3m1lh8c8hf.apps.googleusercontent.com
     private void initGoogle(String accessToken) {
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
