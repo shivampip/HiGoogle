@@ -56,7 +56,7 @@ dependencies {
 # Documentation
 
 Adding Google SignIn button in your app involves two tasks
-1. Register your app on Google Cloude Plateform
+1. Register your app on Google Cloud Plateform
 2. Programming in Android Studio or else
 
 
